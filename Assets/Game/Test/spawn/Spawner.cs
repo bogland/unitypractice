@@ -37,12 +37,12 @@ namespace tang.oh
 
             foreach (var one in spawnList)
             {
-                var pos = new Vector3(posPlayer.x + UnityEngine.Random.Range(-10.0f, 10.0f), posPlayer.y + UnityEngine.Random.Range(-10.0f, 10.0f), 0);
+                var pos = new Vector3(posPlayer.x + UnityEngine.Random.Range(-100.0f, 100.0f), posPlayer.y + UnityEngine.Random.Range(-100.0f, 100.0f), 0);
                 var mobInfo = DataMonster.Instance.Get(one.idMonster);
                 var enemy = await _resourceLoader.GetAsync<GameObject>("enemy");
                 var imagePack = await _resourceLoader.GetAsync<SpriteAtlas>("atlas");
-                var skin = imagePack.GetSprite(mobInfo.imageKey);
-                enemy.GetComponent<Enemy>().Image.sprite = skin;
+                var sprite = await _resourceLoader.GetAsync<Sprite>(mobInfo.imageKey);
+                enemy.GetComponent<Enemy>().Image.sprite = sprite;
 
                 Instantiate(enemy, pos, Quaternion.identity);
                 Debug.Log($"<color=yellow>{DateTime.Now} {one.id} {one.stage} {one.idMonster} </color>");
