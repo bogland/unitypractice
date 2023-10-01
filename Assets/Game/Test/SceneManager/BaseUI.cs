@@ -14,9 +14,9 @@ namespace oh
 
     public class BaseUI : MonoBehaviour
     {
-        ResourceLoader _ResourceLoader = new ResourceLoader();
+        static ResourceLoader _ResourceLoader = new ResourceLoader();
         BaseUI _UIObject;
-        public virtual async Task<T> Open<T>(UIProperty property = null) where T : BaseUI
+        public static async Task<T> Open<T>(UIProperty property = null) where T : BaseUI
         {
             var target = await _ResourceLoader.GetAsync<GameObject>(typeof(T).Name);
             if(target == null)
@@ -41,7 +41,7 @@ namespace oh
                 Destroy(gameObject);
                 return default;
             }
-            gameObject.transform.parent = parent;
+            gameObject.transform.SetParent(parent);
             var rectTransform = gameObject.GetComponent<RectTransform>();
             rectTransform.localScale = Vector3.one;
             rectTransform.anchorMin = Vector2.zero;
