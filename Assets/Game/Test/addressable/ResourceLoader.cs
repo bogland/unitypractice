@@ -25,6 +25,7 @@ public class ResourceLoader
     public async Task<T> LoadAsync<T>(string key)
     {
         var handler = Addressables.LoadAssetAsync<T>(key);
+        Debug.Log("key " + key);
         var asset = await handler.Task;
         if(asset == null)
         {

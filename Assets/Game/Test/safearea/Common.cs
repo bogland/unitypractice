@@ -16,8 +16,7 @@ public class Common : MonoBehaviour
 {
     Header header;
     Footer footer;
-    Image bgSafeAreaHeader;
-    Image bgSafeAreaFooter;
+    Image bgSafeArea;
     CanvasScaler canvasScaler;
     SafeArea safeArea;
 
@@ -56,18 +55,15 @@ public class Common : MonoBehaviour
     {
         header = GetComponentInChildren<Header>();
         footer = GetComponentInChildren<Footer>();
-        bgSafeAreaHeader = GetComponentsInChildren<Image>().Single(v => v.name == "BG_SafeArea_Header");
-        bgSafeAreaFooter = GetComponentsInChildren<Image>().Single(v => v.name == "BG_SafeArea_Footer");
+        bgSafeArea = transform.parent.GetComponentsInChildren<Image>().Single(v => v.name == "BG_SafeArea");
         safeArea = GetComponentInChildren<SafeArea>();
-        canvasScaler = GetComponentInChildren<CanvasScaler>();
+        canvasScaler = transform.parent.GetComponentInChildren<CanvasScaler>();
     }
 
     void SetSafeAreaBGHeight()
     {
-        bgSafeAreaHeader.rectTransform.anchorMax = new Vector2(1, 1f);
-        bgSafeAreaHeader.rectTransform.anchorMin = new Vector2(0, safeArea.MaxAnchor.y);
-        bgSafeAreaFooter.rectTransform.anchorMax = new Vector2(1, safeArea.MinAnchor.y);
-        bgSafeAreaFooter.rectTransform.anchorMin = new Vector2(0, 0f);
+        bgSafeArea.rectTransform.anchorMax = new Vector2(1, 1f);
+        bgSafeArea.rectTransform.anchorMin = new Vector2(0, 0f);
     }
 
     void Start()

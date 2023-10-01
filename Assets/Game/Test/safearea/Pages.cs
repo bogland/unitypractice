@@ -30,7 +30,7 @@ public class Pages : MonoBehaviour
         // Common의 header와 footer height를 구하는 과정이 느려서 딜레이 필요
         await Task.Delay(100);
         var anchorPage = FindObjectOfType<Common>().GetPageAnchor();
-        var safeArea = GetComponentsInChildren<RectTransform>().Single(v=>v.name=="SafeArea");
+        var safeArea = GetComponent<RectTransform>();
         safeArea.anchorMin = anchorPage.Item1;
         safeArea.anchorMax = anchorPage.Item2;
         safeArea.offsetMax = new Vector2(safeArea.offsetMax.x, 0f);

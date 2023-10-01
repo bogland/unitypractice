@@ -41,7 +41,7 @@ namespace tang.oh.data
                 timeStart = 5,
                 timeEnd = 10,
                 timeGap = 1,
-                flagSpawn = eFlagSpawn.none,
+                flagSpawn = eFlagSpawn.none | eFlagSpawn.inCrowd,
                 count = 1
             });
         }
