@@ -15,8 +15,8 @@ namespace oh
     public class BaseUI : MonoBehaviour
     {
         ResourceLoader _ResourceLoader = new ResourceLoader();
-        GameObject _UIObject;
-        public virtual async Task<T> Open<T>()
+        BaseUI _UIObject;
+        public virtual async Task<T> Open<T>(UIProperty property = null) where T : BaseUI
         {
             var target = await _ResourceLoader.GetAsync<GameObject>(typeof(T).Name);
             if(target == null)
@@ -48,7 +48,7 @@ namespace oh
             rectTransform.anchorMax = Vector2.one;
             rectTransform.offsetMin = Vector2.zero;
             rectTransform.offsetMax = Vector2.one;
-
+            result.Init(property);
             return result;
         }
 
@@ -59,9 +59,8 @@ namespace oh
             Destroy(gameObject);
         }
 
-        public virtual void Init(UIProperty uIProperty)
+        public virtual void Init(UIProperty property)
         {
-
         }
         public virtual void Refresh(UIProperty uIProperty)
         {

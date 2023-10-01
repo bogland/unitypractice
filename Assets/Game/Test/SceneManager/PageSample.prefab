@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2192136795395737550}
   - component: {fileID: 2192136795395737551}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: text_Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 2192136795525655363}
   - component: {fileID: 2192136795525655388}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: text_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -462,3 +462,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f86ae8dd097b34fbf60dcec4a3a549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textTitle: {fileID: 2192136795525655388}
+  textDescription: {fileID: 2192136795395737551}

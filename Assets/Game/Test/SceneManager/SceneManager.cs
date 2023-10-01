@@ -26,7 +26,12 @@ namespace oh
             if (eScene == eScene.Lobby)
             {
                 BaseUI baseUI = new BaseUI();
-                var pageSample = await baseUI.Open<PageSample>();
+                var props = new PageSampleProps() 
+                { 
+                    title = "본문11",
+                    description = "설명22"
+                };
+                var pageSample = await baseUI.Open<PageSample>(props);
             }
         }
     }
