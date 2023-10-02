@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.U2D;
 
-namespace tang.oh
+namespace oh
 {
     public class Spawner : MonoBehaviour
     {
@@ -43,7 +43,7 @@ namespace tang.oh
                 var enemy = await _resourceLoader.GetAsync<GameObject>("enemy");
                 var imagePack = await _resourceLoader.GetAsync<SpriteAtlas>("atlas");
                 var sprite = await _resourceLoader.GetAsync<Sprite>(mobInfo.imageKey);
-                enemy.GetComponent<Enemy>().Image.sprite = sprite;
+                enemy.GetComponent<oh.Enemy>().Image.sprite = sprite;
                 var enemyObj = await Addressables.InstantiateAsync(enemy, pos, Quaternion.identity).Task;
                 enemyObj.transform.parent = canvas.transform;
                 Debug.Log($"<color=yellow>{DateTime.Now} {one.id} {one.stage} {one.idMonster} </color>");
