@@ -109,17 +109,79 @@ namespace tang.oh.data
 
     }
 
+
+    public enum FlagTarget
+    {
+        None = 0x000,
+        Me = 0x001,
+        Friend = 0x002,
+        Enemy = 0x004,
+        Ground = 0x008,
+    }
+
+    public enum CastType
+    {
+        Instant ,
+        Casting,
+        Channeling,
+    }
+
+    public enum CastRole
+    {
+        Attack,
+        Buf, 
+        Debuf,
+        Heal,
+        EffectBuf,
+        EffectDebuf,
+        Special,
+    }
+
     public class DatumSkill
     {
-        public long id;
-        public string imageProjectile;
-        public int speed;
+        public string id;
+        public CastType castType; 
+        public CastRole castRole;
+        public FlagTarget flagTarget;
+        public float range;
+        public float timeCast;
+        public float timeCool;
+        public int damageStandard;
+        public float timeCoolGlobal;
         public float damage;
+        public float speed;
     }
 
     public class DataSkill : Singleton<DataSkill>
     {
-        Dictionary<string, DatumSkill> dataMonsterDic = new Dictionary<string, DatumSkill>();
+        Dictionary<string, DatumSkill> dataDic = new Dictionary<string, DatumSkill>();
+
+        protected override void Init()
+        {
+            dataDic.Add("skill_bullet", new DatumSkill
+            { 
+                id = "skill_bullet",
+                castType = CastType.Instant,
+                castRole = CastRole.Attack,
+                flagTarget = FlagTarget.Enemy,
+                timeCast = 0f,
+                range = 10,
+                damageStandard = 0,
+                timeCool = 1,
+                timeCoolGlobal = 1,
+                damage = 10,
+                speed = 3,
+            });
+        }
+
+        public DatumSkill Get(string id)
+        {
+            if (dataDic.TryGetValue(id.ToString(), out var one))
+            {
+                return one;
+            }
+            return null;
+        }
     }
 
 
