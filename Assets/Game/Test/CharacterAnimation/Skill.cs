@@ -106,6 +106,8 @@ namespace oh.skill
 
         async void PreCast()
         {
+            //
+
             Activate(SkillState.Cast);
         }
         async void Cast()
